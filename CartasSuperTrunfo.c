@@ -6,11 +6,11 @@ int main() {
 
     char state_1, code_1[5], city_1[50];
     int populationAmount_1, sights_1;
-    float area_1, pib_1;
+    float area_1, pib_1, pibCapita_1, populationDensity_1;
 
     char state_2, code_2[5], city_2[50];
     int populationAmount_2, sights_2;
-    float area_2, pib_2;
+    float area_2, pib_2, pibCapita_2, populationDensity_2;
 
     // Leitura dos dados - Cidade 01
 
@@ -19,7 +19,7 @@ int main() {
 
     printf("Insira o código da cidade: \n");
     scanf("%s", code_1);
-    getchar(); // Retira a quebra de linha do comando de leitura para que o próximo comando funcione corretamente, faça isso sempre que alterar entre leitura de chars, strings e numbers - float, int, double...
+    getchar(); // Retira a quebra de linha do comando de leitura para que o próximo comando funcione corretamente, faça isso sempre que alternar entre leitura de chars, strings e numbers - float, int, double...
 
     printf("Insira o nome da cidade: \n");
     fgets(city_1, 49, stdin); // Faz a leitura do teclado(stdin), obecedendo o espaçamento e capturando todos os elementos corretamente
@@ -28,7 +28,7 @@ int main() {
     printf("Quantas pessoas vivem nessa cidade: \n");
     scanf("%i", &populationAmount_1);
 
-    printf("Qual a area aproximada dessa cidade: \n");
+    printf("Qual a area aproximada dessa cidade em quilometros quadrados: \n");
     scanf("%f", &area_1);
 
     printf("Qual o valor aproximado do PIB dessa cidade: \n");
@@ -37,7 +37,12 @@ int main() {
     printf("Quantos pontos turísticos há nessa cidade: \n");
     scanf("%i", &sights_1);
 
-    getchar(); // Retira a quebra de linha do comando de leitura para que o próximo comando funcione corretamente, faça isso sempre que alterar entre leitura de chars, strings e numbers - float, int, double...
+    // Calculo dos dados complexos - Para não haver perda de dados em um calculo que envolve numeros inteiros e floats, recomenda-se o uso do casting explicito.
+    populationDensity_1 = (float) populationAmount_1 / area_1; // Densidade Populacional
+
+    pibCapita_1 = (float) pib_1 / populationAmount_1; // PIB per Capita
+
+    getchar(); // Retira a quebra de linha do comando de leitura para que o próximo comando funcione corretamente, faça isso sempre que alternar entre leitura de chars, strings e numbers - float, int, double...
 
     // Leitura dos dados - Cidade 02
 
@@ -46,7 +51,7 @@ int main() {
 
     printf("Insira o código da cidade: \n");
     scanf("%s", code_2);
-    getchar(); // Retira a quebra de linha do comando de leitura para que o próximo comando funcione corretamente, faça isso sempre que alterar entre leitura de chars, strings e numbers - float, int, double...
+    getchar(); // Retira a quebra de linha do comando de leitura para que o próximo comando funcione corretamente, faça isso sempre que alternar entre leitura de chars, strings e numbers - float, int, double...
 
     printf("Insira o nome da cidade: \n");
     fgets(city_2, 49, stdin); // Faz a leitura do teclado(stdin), obecedendo o espaçamento e capturando todos os elementos corretamente
@@ -55,7 +60,7 @@ int main() {
     printf("Quantas pessoas vivem nessa cidade: \n");
     scanf("%i", &populationAmount_2);
 
-    printf("Qual a area aproximada dessa cidade: \n");
+    printf("Qual a area aproximada dessa cidade em quilometros quadrados: \n");
     scanf("%f", &area_2);
 
     printf("Qual o valor aproximado do PIB dessa cidade: \n");
@@ -63,6 +68,11 @@ int main() {
 
     printf("Quantos pontos turísticos há nessa cidade: \n");
     scanf("%i", &sights_2);
+
+    // Calculo dos dados complexos - Para não haver perda de dados em um calculo que envolve numeros inteiros e floats, recomenda-se o uso do casting explicito.
+    populationDensity_2 = (float) populationAmount_2 / area_2; // Densidade Populacional
+
+    pibCapita_2 = (float) pib_2 / populationAmount_2; // PIB per Capita
 
     // Apresentação dos dados - Cidade 01
 
@@ -75,6 +85,8 @@ int main() {
     printf("Área (KM^2): %.2f\n", area_1);
     printf("PIB: %.2f R$\n", pib_1);
     printf("Número de pontos turísticos: %d\n", sights_1);
+    printf("Densidade Populacional: %.2f \n", populationDensity_1);
+    printf("PIB per capita: %.2f R$\n", pibCapita_1);
     printf("\n");
 
     // Apresentação dos dados - Cidade 02
@@ -88,6 +100,8 @@ int main() {
     printf("Área (KM^2): %.2f\n", area_2);
     printf("PIB: %.2f R$\n", pib_2);
     printf("Número de pontos turísticos: %d\n", sights_2);
+    printf("Densidade Populacional: %.2f\n", populationDensity_2);
+    printf("PIB per capita: %.2f R$\n", pibCapita_2);
     printf("\n");
 
     return 0;
